@@ -41,88 +41,19 @@ public class OrdersManagement {
         WebUI.waitForElementVisible(statusFilter);
     }
 
-    @Step("Select a random checkbox from the table")
-    public void selectRandomCheckbox() {
-        ElementsCollection checkboxes = $$("tbody tr .Polaris-Checkbox");
-        int randomIndex = new Random().nextInt(checkboxes.size());
-        SelenideElement randomCheckbox = checkboxes.get(randomIndex);
-        if (!randomCheckbox.findElement(By.cssSelector("input[type=checkbox]")).isSelected()) {
-            randomCheckbox.click();
-        }
-    }
-
-    @Step("Select random 2 checkboxes from the table")
-    public void selectRandom2Checkboxes() {
-        ElementsCollection checkboxes = $$("tbody tr .Polaris-Checkbox");
-        int randomIndex1 = new Random().nextInt(checkboxes.size());
-        int randomIndex2 = new Random().nextInt(checkboxes.size());
-        while (randomIndex2 == randomIndex1) {
-            randomIndex2 = new Random().nextInt(checkboxes.size());
-        }
-        SelenideElement randomCheckbox1 = checkboxes.get(randomIndex1);
-        SelenideElement randomCheckbox2 = checkboxes.get(randomIndex2);
-        if (!randomCheckbox1.findElement(By.cssSelector("input[type=checkbox]")).isSelected()) {
-            randomCheckbox1.click();
-        }
-        if (!randomCheckbox2.findElement(By.cssSelector("input[type=checkbox]")).isSelected()) {
-            randomCheckbox2.click();
-        }
-    }
-
-    @Step("Select all checkboxes from the table")
-    public void selectAllCheckboxes() {
-        ElementsCollection checkboxes = $$("tbody tr .Polaris-Checkbox");
-        for (SelenideElement checkbox : checkboxes) {
-            if (!checkbox.findElement(By.cssSelector("input[type=checkbox]")).isSelected()) {
-                checkbox.click();
-            }
-        }
-    }
-
-    @Step("Unselect all checkboxes from the table")
-    public void unselectAllCheckboxes() {
-        ElementsCollection checkboxes = $$("tbody tr .Polaris-Checkbox");
-        for (SelenideElement checkbox : checkboxes) {
-            if (checkbox.findElement(By.cssSelector("input[type=checkbox]")).isSelected()) {
-                checkbox.click();
-            }
-        }
-    }
-
-    @Step("Make sure all checkboxes are checked")
-    public boolean areAllCheckboxesChecked() {
-        ElementsCollection checkboxes = $$("tbody tr input[type='checkbox']");
-        for (SelenideElement checkbox : checkboxes) {
-            if (!checkbox.isSelected()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    @Step("Make sure all checkboxes are unchecked")
-    public boolean areAllCheckboxesUnchecked() {
-        ElementsCollection checkboxes = $$("tbody tr input[type='checkbox']");
-        for (SelenideElement checkbox : checkboxes) {
-            if (checkbox.isSelected()) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     public void unSelectButtonPerformsCorrectly() {
         WebUI.ensureButtonIsDisabledByClass(unSelectButton);
-        selectAllCheckboxes();
+        WebUI.selectAllCheckboxes();
         WebUI.ensureButtonIsNotDisabledByClass(unSelectButton);
         WebUI.clickElement(unSelectButton);
-        assert areAllCheckboxesUnchecked();
+        assert WebUI.areAllCheckboxesUnchecked();
         WebUI.ensureButtonIsDisabledByClass(unSelectButton);
     }
 
     @Step("Bulk action buttons are visible")
     public void bulkActionsIsVisible() {
-        selectAllCheckboxes();
+        WebUI.selectAllCheckboxes();
         WebUI.waitForElementVisible(editOrderButton);
         WebUI.waitForElementVisible(deleteOrderButton);
         WebUI.waitForElementVisible(confirmPaymentButton);
@@ -136,15 +67,15 @@ public class OrdersManagement {
     }
 
     public void bulkActionsPerformCorrectly() {
-        selectRandomCheckbox();
+        WebUI.selectRandomCheckbox();
         bulkActionsIsVisible();
-        selectRandom2Checkboxes();
+        WebUI.selectRandom2Checkboxes();
         WebUI.ensureButtonIsDisabledByClass(editOrderButton);
         WebUI.ensureButtonIsNotDisabledByClass(deleteOrderButton);
         WebUI.ensureButtonIsNotDisabledByClass(confirmPaymentButton);
         WebUI.clickElement(unSelectButton);
         filterPaidOrders();
-        selectRandomCheckbox();
+        WebUI.selectRandomCheckbox();
         WebUI.ensureButtonIsDisabledByClass(confirmPaymentButton);
         WebUI.ensureButtonIsNotDisabledByClass(editOrderButton);
         WebUI.ensureButtonIsNotDisabledByClass(deleteOrderButton);

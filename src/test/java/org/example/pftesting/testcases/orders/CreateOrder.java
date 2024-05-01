@@ -1,4 +1,4 @@
-package org.example.pftesting.testcases;
+package org.example.pftesting.testcases.orders;
 
 import org.example.pftesting.pages.CommonPage;
 import org.testng.annotations.*;

@@ -104,6 +104,8 @@ public class OrdersPage extends CommonPage {
     @Description("Số lượng = \"\", Giá nhập = \"\"")
     public void addOrderProduct_emptyData() {
         openAddOrderProductModal();
+        WebUI.clearInputField(productPriceInput);
+        WebUI.clearInputField(productQuantityInput);
         WebUI.clickButtonWithText("Thêm");
         WebUI.assertModalIsOpen(addOrderProductModalBy);
         WebUI.assertInputHasErrorText("price--input", ErrorKeys.PRODUCT_PRICE_MIN);
@@ -171,6 +173,7 @@ public class OrdersPage extends CommonPage {
         WebUI.clearAndFillValue(productQuantityInput, "0");
         WebUI.clearAndFillValue(productPriceInput, "1000");
         WebUI.clickButtonWithText("Thêm");
+        WebUI.assertInputHasErrorText("quantity--input", ErrorKeys.PRODUCT_QUANTITY_MIN);
         WebUI.assertModalIsOpen(addOrderProductModalBy);
     }
 
