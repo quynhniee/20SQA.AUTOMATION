@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="/Users/bbadmin/Documents/BB/pftesting/src/test/java/org/example/pftesting/testcases">
+        <classes>
+            <class name="org.example.pftesting.testcases.OrderPage">
+                <methods>
+                    <include name="pageIsLoaded"/>
+                    <include name="unSelectAll"/>
+                    <include name="bulkActionButtonsAppear"/>
+                </methods>
+            </class>
+
+            <class name="org.example.pftesting.testcases.CreateOrder">
+                <methods>
+                    <include name="createOrder_invalidData_emptyCode"/>
+                    <include name="createOrder_invalidData_invalidCode"/>
+                    <include name="createOrder_invalidData_containsSpace"/>
+                    <include name="createOrder_invalidData_startWithSpace"/>
+                    <include name="createOrder_invalidData_specialCharacterCode"/>
+                    <include name="createOrder_invalidData_defaultProductData"/>
+                    <include name="createOrder_invalidData_emptyProductData"/>
+                    <include name="createOrder_invalidData_emptyProductQuantity"/>
+                    <include name="createOrder_invalidData_zeroProductQuantity"/>
+                    <include name="createOrder_invalidData_negativeProductQuantity"/>
+                    <include name="createOrder_invalidData_negativeNegativeProductQuantity"/>
+                    <include name="createOrder_invalidData_emptyProductPrice"/>
+                    <include name="createOrder_invalidData_zeroProductPrice"/>
+                    <include name="createOrder_invalidData_negativeProductPrice"/>
+                    <include name="createOrder_invalidData_invalidCharacterProductPrice"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>
