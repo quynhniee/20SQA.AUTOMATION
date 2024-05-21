@@ -4,6 +4,14 @@
     <test verbose="2" preserve-order="true"
           name="/Users/bbadmin/Documents/BB/pftesting/src/test/java/org/example/pftesting/testcases">
         <classes>
+            <class name="org.example.pftesting.testcases.orders.OrderPage">
+                <methods>
+                    <include name="pageIsLoaded"/>
+                    <include name="unSelectAll"/>
+                    <include name="bulkActionButtonsAppear"/>
+                </methods>
+            </class>
+
             <class name="org.example.pftesting.testcases.orders.CreateOrder">
                 <methods>
                     <include name="createOrder_invalidData_emptyCode"/>
@@ -21,13 +29,6 @@
                     <include name="createOrder_invalidData_zeroProductPrice"/>
                     <include name="createOrder_invalidData_negativeProductPrice"/>
                     <include name="createOrder_invalidData_invalidCharacterProductPrice"/>
-                </methods>
-            </class>
-            <class name="org.example.pftesting.testcases.orders.OrderPage">
-                <methods>
-                    <include name="pageIsLoaded"/>
-                    <include name="unSelectAll"/>
-                    <include name="bulkActionButtonsAppear"/>
                 </methods>
             </class>
             <class name="org.example.pftesting.testcases.suppliers.SupplierPage">

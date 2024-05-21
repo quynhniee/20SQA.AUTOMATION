@@ -17,10 +17,10 @@ public class CreateOrder extends CommonPage {
         getImportOrderPage().openCreateOrderModal();
     }
 
-    @AfterTest
-    public void closeModal() {
-        getImportOrderPage().closeCreateOrderModal();
-    }
+//    @AfterTest
+//    public void closeModal() {
+//        getImportOrderPage().closeCreateOrderModal();
+//    }
 
 
     @Test (groups = "createOrder", priority = -1, description = "Tạo đơn hàng bỏ trống toàn bộ data")

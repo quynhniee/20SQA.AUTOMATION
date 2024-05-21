@@ -35,7 +35,7 @@ public class WebUI {
 
     @Step("Click on the button containing text \"{0}\"")
     public static void clickButtonWithText(String text) {
-        SelenideElement element = $x("//button//*[contains(text(),'" + text + "')]");
+        SelenideElement element = $x("//button//*[text()='" + text + "']");
         element.shouldBe(Condition.visible).click();
     }
 
